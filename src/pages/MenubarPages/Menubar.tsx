@@ -1,69 +1,93 @@
-import React from 'react'
-import { useNavigate } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Invoices, Referrals, Loans, Profile, Settings, Summary } from '../MenubarPages';
-import { Mainsection, MenuBar, DisplaySection, Anchar, PrimaryBtn } from '../../components/complete.style';
-// import {  IconProp } from '@fortawesome/fontawesome-svg-core';
-// import { FaBell } from 'react-icons/fa';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  Link } from "react-router-dom";
+import { Layer, User, Rupee, Moneybill, Address, Gear } from '../../asserts/svgs';
+import { Mainsection, MenuBar, DisplaySection, PrimaryBtn,Anchar, IconImg } from '../../components/complete.style';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Invoices, Referrals, Loans, Profile, Settings, Summary } from '../../pages/MenubarPages';
+
 
 
 function Menubar() {
-  const navigate = useNavigate();
-  // const faBellIcon: IconProp = icon(FaBell);
 
 
 
   return (
-    <>
-    <Mainsection>
-      <MenuBar>
+    <BrowserRouter>
+      <Mainsection>
+        <MenuBar>
 
-        <PrimaryBtn>Refferal Code - 5AND1</PrimaryBtn> 
+          <PrimaryBtn>Refferal Code - 5AND1</PrimaryBtn> 
 
-        <Anchar href="" onClick={() => navigate('/Summary')}>
-            Summary
-        </Anchar>
-        <Anchar href="" onClick={() => navigate('/Referrals')}>
-            Referrals
-        </Anchar>
-        <Anchar href="" onClick={() => navigate('/Loans')}>
-            Loans
-        </Anchar>
-        <Anchar href="" onClick={() => navigate('/Invoices')}>
-            Invoices
-        </Anchar>
-        <Anchar href="" onClick={() => navigate('/Profile')}>
-            Profile
-        </Anchar>
-        <Anchar href="" onClick={() => navigate('/Settings')}>
-            Settings
-        </Anchar>
+          <Link style={{textDecoration:"none"}}  to="/Summary">
+            <Anchar>
+              <IconImg><Layer /></IconImg>  
+              Summary
+            </Anchar>
+          </Link>
 
-      </MenuBar>
 
-      <DisplaySection>
+          <Link style={{textDecoration:"none"}} to="/Referrals">
+            <Anchar>
+              <IconImg><User /></IconImg>
+              Refferals
+            </Anchar>
+          </Link>
+
+
+          <Link style={{textDecoration:"none"}} to="/Loans">
+            <Anchar>
+              <IconImg><Rupee /></IconImg>  
+              Loans
+            </Anchar>
+          </Link>
+
+
+          <Link style={{textDecoration:"none"}} to="/Invoices">
+            <Anchar>
+              <IconImg><Moneybill /></IconImg>
+              Invoices
+            </Anchar>
+          </Link>
+
+
+          <Link style={{textDecoration:"none"}} to="/Profile">
+            <Anchar>
+              <IconImg><Address /></IconImg>
+              Profile
+            </Anchar>
+          </Link>
+
+
+          <Link style={{textDecoration:"none"}} to="/Settings">
+            <Anchar>
+              <IconImg><Gear /></IconImg>
+              Settings
+            </Anchar>
+          </Link>
+
+        </MenuBar>
         
-          
+
+        <DisplaySection>
+
           <Routes>
-            <Route path='/Invoices' element={<Invoices />} />
-            <Route path='/Referrals' element={<Referrals />} />
-            <Route path='/Loans' element={<Loans />} />
-            <Route path='/Profile' element={<Profile />} />
-            <Route path='/Settings' element={<Settings />} />
-            <Route path='/Summary' element={<Summary />} />
+            <Route  path="/Summary" element={<Summary />} />
+            <Route  path="/Referrals" element={<Referrals />} />
+            <Route  path="/Loans" element={<Loans />} />
+            <Route  path="/Invoices" element={<Invoices />} />
+            <Route  path="/Profile" element={<Profile />} />
+            <Route  path="/Settings" element={<Settings />} />
           </Routes>
 
-        
-      </DisplaySection>
-
-
-    </Mainsection>
-        
+        </DisplaySection>
 
 
 
-    </>
+      
+
+
+      </Mainsection>
+ 
+    </BrowserRouter>
     
   )
 }
